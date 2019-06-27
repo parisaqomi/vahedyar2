@@ -30,41 +30,19 @@
                       <tr>
                           <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle fa-minus-circle ml-3"></i>دروس اصلی</button> </td>
                       </tr>
-                      <tr class="toggler toggler1">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler toggler1">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler toggler1">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler toggler1">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler toggler1">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
+
+                      {% for course in courses %}
+                      {% comment %} {% if {{course.course_type }}== "1" %}   {% endcomment %}
+                        <tr class="toggler toggler1">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.corequisite_courses}}</td>
+                            <td>{{course.prerequisite_courses}}</td>
+                        </tr>
+                      {% comment %} {% endif %} {% endcomment %}
+                      {% endfor %}
+
                       
                   </tbody>
                   <tbody>
@@ -78,62 +56,7 @@
                           <td>0</td>
                           <td>0</td>
                       </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
+    
                   </tbody>
                   <tbody>
                       <tr>
@@ -146,34 +69,7 @@
                           <td>0</td>
                           <td>0</td>
                       </tr>
-                     <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
+
                   </tbody>
 
               </table>

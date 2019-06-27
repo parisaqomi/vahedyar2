@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Study
+from .models import Study , Course
 
 
 def get_index(request):
@@ -22,7 +22,8 @@ def get_courseAssistant(request):
 
 def get_courseList(request):
     if (request.method =="GET"):
-        return render(request, 'core/CourseList.html')
+        courses = Course.objects.all()
+        return render(request, 'core/CourseList.html', {'courses':courses})
 
 def get_courseSituation(request):
     if (request.method =="GET"):
