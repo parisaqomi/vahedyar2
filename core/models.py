@@ -53,7 +53,7 @@ class Chart(models.Model):
         verbose_name=u'چارت تحصیلی '
         verbose_name_plural=u'چارت‌های تحصیلی'  
     def __str__(self):
-        return f"چارت {self.title} دانشکده {self.faculty}" 
+        return f" {self.title} دانشکده {self.faculty}" 
 
 class Study(models.Model):
     degree = models.IntegerField(choices=DEGREE_TYPE_CHOISES, verbose_name="مقطع تحصیلی")

@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from .models import Study
+
 
 def get_index(request):
     if (request.method =="GET"):
-        return render(request, 'core/index.html')
+        studies = Study.objects.all()
+        return render(request, 'core/index.html', {'studies':studies})
+
 
 def get_t(request):
     if (request.method =="GET"):
