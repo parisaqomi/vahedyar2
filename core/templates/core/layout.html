@@ -50,7 +50,7 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link text-right" href="{% url 'dashboard' %}">
+        <a class="nav-link text-right" href="{% url 'dashboard' study_id=request.session.study_id %}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>داشبورد</span></a>
       </li>

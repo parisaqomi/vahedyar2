@@ -47,26 +47,26 @@
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link text-right" href="{% url 'dashboard' %}">
+        <a class="nav-link text-right">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>داشبورد</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link text-right" href="{% url 'courseList' %}">
+        <a class="nav-link text-right">
           <i class="fas fa-fw fa-list-alt"></i>
           <span>لیست دروس من</span></a>
       </li>
 
 
       <li class="nav-item active">
-        <a class="nav-link text-right" href="{% url 'courseSituation' %}">
+        <a class="nav-link text-right">
             <i class="fas fa-fw fa-tasks"></i>
           <span>وضعیت دروس</span></a>
       </li>
 
 
       <li class="nav-item active">
-        <a class="nav-link text-right" href="{% url 'courseAssistant' %}">
+        <a class="nav-link text-right">
           <i class="fab fa-fw fa-hire-a-helper"></i>
           <span>دستیار اخذ درس</span></a>
       </li>
@@ -157,7 +157,7 @@
                 <div class="card shadow my-4">
                   <div class="card-body">
                     <div class=" py-5 pb-2">
-                      <a> {{study.degree}}
+                      <a href="{% url 'dashboard' study_id=study.pk %}"> {{study.get_degree_display}}
                           {{study.chart}}
                       </a>
                     </div>
