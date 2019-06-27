@@ -20,8 +20,8 @@
                   <thead>
                       <tr>
                           <th>نام درس</th>
-                          <th>واحد عملی</th>
                           <th>واحد نظری</th>
+                          <th>واحد عملی</th>
                           <th> هم‌نیاز</th>
                           <th> پیش‌نیاز</th>
                       </tr>
@@ -32,15 +32,15 @@
                       </tr>
 
                       {% for course in courses %}
-                      {% comment %} {% if {{course.course_type }}== "1" %}   {% endcomment %}
+                      {% if course.course_type == 1 %}
                         <tr class="toggler toggler1">
                             <td>{{course.title}} </td>
-                            <td>{{course.vahed_amali}}</td>
                             <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
                             <td>{{course.corequisite_courses}}</td>
                             <td>{{course.prerequisite_courses}}</td>
                         </tr>
-                      {% comment %} {% endif %} {% endcomment %}
+                      {% endif %}
                       {% endfor %}
 
                       
@@ -49,26 +49,51 @@
                       <tr>
                           <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle ml-3"></i> دروس تخصصی</button></td>
                       </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
+                      {% for course in courses %}
+                      {% if course.course_type == 2 %}
+                        <tr class="toggler toggler1">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>{{course.corequisite_courses}}</td>
+                            <td>{{course.prerequisite_courses}}</td>
+                        </tr>
+                      {% endif %}
+                      {% endfor %}
     
                   </tbody>
                   <tbody>
                       <tr>
+                          <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle  ml-3"></i>دروس عمومی </button></td>
+                      </tr>
+                      {% for course in courses %}
+                      {% if course.course_type == 3 %}
+                        <tr class="toggler toggler1">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>{{course.corequisite_courses}}</td>
+                            <td>{{course.prerequisite_courses}}</td>
+                        </tr>
+                      {% endif %}
+                      {% endfor %}
+
+                  </tbody>
+                   <tbody>
+                      <tr>
                           <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle  ml-3"></i>دروس اختیاری </button></td>
                       </tr>
-                      <tr class="toggler">
-                          <td>مهندسی اینترنت</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                          <td>0</td>
-                      </tr>
+                      {% for course in courses %}
+                      {% if course.course_type == 4 %}
+                        <tr class="toggler toggler1">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>{{course.corequisite_courses}}</td>
+                            <td>{{course.prerequisite_courses}}</td>
+                        </tr>
+                      {% endif %}
+                      {% endfor %}
 
                   </tbody>
 
