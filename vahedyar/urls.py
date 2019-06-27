@@ -19,6 +19,12 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.get_index),
-    path('panel', views.get_panel),
+    path('', views.get_index ),
+    path('panel', views.get_panel, name='dashboard'),
+    path('courseAssistant', views.get_courseAssistant, name='courseAssistant'),
+    path('courseList', views.get_courseList, name='courseList'),
+    path('courseSituation', views.get_courseSituation, name='courseSituation'),
+    path('ftForm', views.get_ftForm),
+    path('login', views.get_login),
+    path('404', views.get_404),
 ]
