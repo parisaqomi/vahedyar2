@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from .models import Study , Course
-
+from django.contrib.auth import authenticate,logout,login
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
+from django.template.loader import get_template
+from django.views.decorators.csrf import csrf_exempt
 
 def get_index(request):
     if request.method =="GET":
@@ -37,4 +43,24 @@ def get_login(request):
 def get_404(request):
     if request.method =="GET":
         return render(request, 'core/404.html')
+
+@csrf_exempt      
+def do_login(request):
+    redir=''
+    if request.method=='GET':
+        redir=request.GET.get('next')
+        return render(request,'core/login.html')        
+    elif request.method=='POST':
         
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            if redir:
+                return HttpResponseRedirect(redir)
+            return HttpResponseRedirect('/')
+        else:
+            request.session['error']='کاربری با این مشخصات وجود ندارد'
+            return render(request,'core/login.html')
+

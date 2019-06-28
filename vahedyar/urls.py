@@ -24,7 +24,7 @@ urlpatterns = [
     path('courseAssistant', views.get_courseAssistant, name='courseAssistant'),
     path('courseList', views.get_courseList, name='courseList'),
     path('courseSituation', views.get_courseSituation, name='courseSituation'),
-    path('ftForm', views.get_ftForm),
-    path('login', views.get_login),
+    path('ftForm', views.get_ftForm , name='ftForm'),
+    path('login', views.do_login , name='login'),
     path('404', views.get_404),
 ]
