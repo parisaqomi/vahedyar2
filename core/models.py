@@ -114,8 +114,3 @@ class Course(models.Model):
         verbose_name_plural=u'درس‌ها '  
     def __str__(self):
         return f"{self.title}" 
-
-class Student(models.Model):
-    name = models.CharField(verbose_name=" نام و نام خانوادگی ", max_length = 40)
-    email = models.CharField(verbose_name=" رایانامه ", max_length = 80)
-    password = models.CharField(verbose_name=" گذرواژه ", max_length = 25)

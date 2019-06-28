@@ -26,5 +26,6 @@ urlpatterns = [
     path('courseSituation', views.get_courseSituation, name='courseSituation'),
     path('ftForm', views.get_ftForm , name='ftForm'),
     path('login', views.do_login , name='login'),
+    path('logout', views.do_logout , name='logout'),
     path('404', views.get_404),
 ]

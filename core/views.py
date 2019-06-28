@@ -64,3 +64,6 @@ def do_login(request):
             request.session['error']='کاربری با این مشخصات وجود ندارد'
             return render(request,'core/login.html')
 
+def do_logout(request):
+    logout(request)
+    return HttpResponseRedirect('login')
