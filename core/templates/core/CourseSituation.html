@@ -30,152 +30,66 @@
                   <tr>
                       <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle fa-minus-circle ml-3"></i>دروس اصلی</button> </td>
                   </tr>
-                  <tr class="toggler toggler1">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler toggler1">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler toggler1">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler toggler1">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler toggler1">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  
+                    {% for course in courses %}
+                      {% if course.course_type == 1 %}
+                        <tr class="toggler toggler1">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>0</td>
+                            <td><i class="fa fa-edit"></i></td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
               </tbody>
               <tbody>
                   <tr>
                       <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle ml-3"></i> دروس تخصصی</button></td>
                   </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
+                   {% for course in courses %}
+                      {% if course.course_type == 2 %}
+                        <tr class="toggler">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>0</td>
+                            <td><i class="fa fa-edit"></i></td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
+              </tbody>
+              <tbody>
+                  <tr>
+                      <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle  ml-3"></i>دروس عمومی </button></td>
                   </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td><i class="fa fa-edit"></i></td>
-                  </tr>
+                  {% for course in courses %}
+                      {% if course.course_type == 3 %}
+                        <tr class="toggler">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>0</td>
+                            <td><i class="fa fa-edit"></i></td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
               </tbody>
               <tbody>
                   <tr>
                       <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle  ml-3"></i>دروس اختیاری </button></td>
                   </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                  </tr>
-                 <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                  </tr>
-                  <tr class="toggler">
-                      <td>مهندسی اینترنت</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                  </tr>
+                  {% for course in courses %}
+                      {% if course.course_type == 4 %}
+                        <tr class="toggler">
+                            <td>{{course.title}} </td>
+                            <td>{{course.vahed_nazari}}</td>
+                            <td>{{course.vahed_amali}}</td>
+                            <td>0</td>
+                            <td><i class="fa fa-edit"></i></td>
+                        </tr>
+                      {% endif %}
+                    {% endfor %}
               </tbody>
-
           </table>
 
           </div>

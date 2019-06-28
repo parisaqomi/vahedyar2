@@ -30,7 +30,8 @@ def get_courseList(request):
 
 def get_courseSituation(request):
     if request.method =="GET":
-        return render(request, 'core/CourseSituation.html')
+        courses = Course.objects.all()
+        return render(request, 'core/CourseSituation.html', {'courses':courses})
 
 def get_ftForm(request):
     if request.method =="GET":

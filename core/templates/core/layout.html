@@ -124,7 +124,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                    {{ user.username }}
+                    وقت بخیر{{ user.username }}!
                  </span>
               </a>
               <!-- Dropdown - User Information -->
@@ -178,8 +178,9 @@
     </div>
   </div>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+  {% comment %} <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script> {% endcomment %}
   <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   
   
