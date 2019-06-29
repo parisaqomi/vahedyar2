@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Study , Course
+from .models import Study , Course , University , Faculty
 from django.contrib.auth import authenticate,logout,login
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
@@ -35,7 +35,9 @@ def get_courseSituation(request):
 
 def get_ftForm(request):
     if request.method =="GET":
-        return render(request, 'core/first-time-form.html')
+            universities = University.objects.all()
+            return render(request, 'core/first-time-form.html',
+                {'universities':universities })
 
 def get_login(request):
     if request.method =="GET":

@@ -26,7 +26,7 @@ class University(models.Model):
 
 class Faculty(models.Model):
     name = models.CharField(verbose_name="نام دانشکده" , max_length = 40)
-    universiy = models.ForeignKey(
+    university = models.ForeignKey(
         'University', 
         on_delete=models.CASCADE,
         verbose_name="نام دانشگاه"
@@ -35,7 +35,7 @@ class Faculty(models.Model):
         verbose_name=u'دانشکده '
         verbose_name_plural=u'دانشکده‌ها ' 
     def __str__(self):
-        return f"{self.name} {self.universiy.name}" 
+        return f"{self.name} {self.university.name}" 
 
  
 class Chart(models.Model):
