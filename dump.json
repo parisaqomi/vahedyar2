@@ -1,0 +1,147 @@
+[
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "core",
+            "model": "chart"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "core",
+            "model": "course"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "core",
+            "model": "university"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "core",
+            "model": "study"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 11,
+        "fields": {
+            "app_label": "core",
+            "model": "scores"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 12,
+        "fields": {
+            "app_label": "core",
+            "model": "faculty"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "ryata6erndbhczua4lvf6tkagwl59b6o",
+        "fields": {
+            "session_data": "ZTczZTgwODMyOGNmNmM1M2ZkZjk3OWMwYmY3OWM4OGI4ODgyYThlOTp7InN0dWR5X2lkIjo0fQ==",
+            "expire_date": "2019-07-11T17:35:39.390Z"
+        }
+    },
+    {
+        "model": "sessions.session",
+        "pk": "vhojjw1xemfzbx1nygxyjugd1x3y7mmk",
+        "fields": {
+            "session_data": "M2UyOTZiNTE4ZTQ1Yzg3ODRhMjgxNWNlZjllZjc4ZTQ1NmQ3YmQ0YTp7Il9hdXRoX3VzZXJfaWQiOiIyIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIwNTZhYjFlZjBlNzBlOGQzZDY2ODUxODc4NjM1ODlmYzRhYWZlN2VmIiwic3R1ZHlfaWQiOjR9",
+            "expire_date": "2019-07-12T09:56:22.550Z"
+        }
+    },
+    {
+        "model": "core.university",
+        "pk": 1,
+        "fields": {
+            "name": "\u062a\u0647\u0631\u0627\u0646 \u0645\u0631\u06a9\u0632\u06cc",
+            "has_associates_degree": true,
+            "has_bachelors_degree": true,
+            "has_masters_degree": true,
+            "has_doctorate_degree": true
+        }
+    },
+    {
+        "model": "core.university",
+        "pk": 2,
+        "fields": {
+            "name": "\u0639\u0644\u0645 \u0648 \u0641\u0631\u0647\u0646\u06af",
+            "has_associates_degree": true,
+            "has_bachelors_degree": true,
+            "has_masters_degree": true,
+            "has_doctorate_degree": false
+        }
+    },
+    {
+        "model": "core.university",
+        "pk": 3,
+        "fields": {
+            "name": "\u062a\u0647\u0631\u0627\u0646 \u063a\u0631\u0628",
+            "has_associates_degree": null,
+            "has_bachelors_degree": null,
+            "has_masters_degree": null,
+            "has_doctorate_degree": null
+        }
+    }
+]
