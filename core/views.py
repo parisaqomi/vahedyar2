@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Study , Course , University , Faculty
+from .models import Study , Course , University , Faculty, Score, Chart
 from django.contrib.auth import authenticate,logout,login
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
@@ -36,12 +36,17 @@ def get_courseList(request,study_id):
 def get_courseSituation(request,study_id):
     if request.method =="GET":
         study = Study.objects.get(pk=study_id)
-        request.session['study_id'] = study_id
+        # chart = Chart.objects.filter(study = study)
         courses = Course.objects.all()
+        scores = study.score_set.all()
+        print(scores)
+        request.session['study_id'] = study_id
         return render(request, 'core/CourseSituation.html', {
-                'courses':courses,
+                'scores':scores,
                 'study':study
                 })
+    if request.method == 'POST':
+        pass
 
 def get_ftForm(request):
     if request.method =="GET":
@@ -80,3 +85,21 @@ def do_login(request):
 def do_logout(request):
     logout(request)
     return HttpResponseRedirect('login')
+@csrf_exempt
+def create_or_update_score(request,study_id,course_id):
+    if request.method == 'POST':
+        study = Study.objects.get(pk=study_id)
+        course = Course.objects.get(pk=course_id)
+        score_value = request.POST.get('score')
+        existing_score = Score.objects.filter(study=study).filter(course=course)[0]
+        if existing_score:
+            existing_score.value = score_value
+            existing_score.save()
+            id = existing_score.id
+        else:
+            score = Score(value=score_value,course=course,study=study)
+            score.save()
+            id = score.id
+        
+        result = {'id':id}
+        return JsonResponse(result)

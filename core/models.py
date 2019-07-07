@@ -74,8 +74,8 @@ class Study(models.Model):
     def __str__(self):
         return f"{self.get_degree_display()} {self.chart.title}" 
 
-class Scores(models.Model):
-    score = models.FloatField(verbose_name="نمره")
+class Score(models.Model):
+    value = models.FloatField(verbose_name="نمره")
     study = models.ForeignKey(
         'Study', 
         on_delete=models.CASCADE,
@@ -90,7 +90,7 @@ class Scores(models.Model):
         verbose_name=u'نمره '
         verbose_name_plural=u'نمره‌ها '  
     def __str__(self):
-        return f"{self.name}" 
+        return f"{self.course} | {self.study} | {self.value}" 
 
 class Course(models.Model):
     title = models.CharField(verbose_name="عنوان",max_length = 20)

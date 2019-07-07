@@ -28,69 +28,24 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr>
-                      <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle fa-minus-circle ml-3"></i>دروس اصلی</button> </td>
-                  </tr>
-                    {% for course in courses %}
-                      {% if course.course_type == 1 %}
+                    {% for score in scores %}
                         <tr class="toggler toggler1">
-                            <td>{{course.title}} </td>
-                            <td>{{course.vahed_nazari}}</td>
-                            <td>{{course.vahed_amali}}</td>
-                            <td>0</td>
-                            <td><i class="fa fa-edit"></i></td>
+                            <td>{{score.course.title}} </td>
+                            <td>{{score.course.vahed_nazari}}</td>
+                            <td>{{score.course.vahed_amali}}</td>
+                            <td>
+                              <input id="{{ score.course.id }}" value="{{score.value }}" type='text' placeholder='نمره'>
+                            </td>
+                            <td>
+                            
+                            <button 
+                            class="fa fa-check" data-id="{{ score.course.id }}"
+                            onclick="handleSubmit('{% url 'updateScore' study_id=request.session.study_id course_id=score.course.id %}', this)">
+                            </button></td>
                         </tr>
-                      {% endif %}
                     {% endfor %}
               </tbody>
-              <tbody>
-                  <tr>
-                      <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle ml-3"></i> دروس تخصصی</button></td>
-                  </tr>
-                   {% for course in courses %}
-                      {% if course.course_type == 2 %}
-                        <tr class="toggler">
-                            <td>{{course.title}} </td>
-                            <td>{{course.vahed_nazari}}</td>
-                            <td>{{course.vahed_amali}}</td>
-                            <td>0</td>
-                            <td><i class="fa fa-edit"></i></td>
-                        </tr>
-                      {% endif %}
-                    {% endfor %}
-              </tbody>
-              <tbody>
-                  <tr>
-                      <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle  ml-3"></i>دروس عمومی </button></td>
-                  </tr>
-                  {% for course in courses %}
-                      {% if course.course_type == 3 %}
-                        <tr class="toggler">
-                            <td>{{course.title}} </td>
-                            <td>{{course.vahed_nazari}}</td>
-                            <td>{{course.vahed_amali}}</td>
-                            <td>0</td>
-                            <td><i class="fa fa-edit"></i></td>
-                        </tr>
-                      {% endif %}
-                    {% endfor %}
-              </tbody>
-              <tbody>
-                  <tr>
-                      <td colspan="20" class="page-header"><button type="button" class="tbtn"><i class="fa fa-plus-circle  ml-3"></i>دروس اختیاری </button></td>
-                  </tr>
-                  {% for course in courses %}
-                      {% if course.course_type == 4 %}
-                        <tr class="toggler">
-                            <td>{{course.title}} </td>
-                            <td>{{course.vahed_nazari}}</td>
-                            <td>{{course.vahed_amali}}</td>
-                            <td>0</td>
-                            <td><i class="fa fa-edit"></i></td>
-                        </tr>
-                      {% endif %}
-                    {% endfor %}
-              </tbody>
+    
           </table>
 
           </div>
@@ -101,13 +56,26 @@
 
 {% comment %} <script src="static/core/vendor/jquery/jquery.min.js"></script> {% endcomment %}
 <script>
-  //cs
-  $(".tbtn").on("click",function () {
-    $(this).parents(".custom-table").find(".toggler1").removeClass("toggler1");
-    $(this).parents("tbody").find(".toggler").addClass("toggler1");
-    $(this).parents(".custom-table").find(".fa-minus-circle").removeClass("fa-minus-circle");
-    $(this).parents("tbody").find(".fa-plus-circle").addClass("fa-minus-circle");
-});
+  function handleSubmit(endpoint,sender){
+    var fieldId = $(sender).data('id');
+    var scoreValue = $('#'+fieldId).val();
+     $.ajax({
+        url: endpoint,
+        data: {
+            score: scoreValue
+        },
+        dataType: 'JSON',
+        method: 'POST',
+        success: function (result) {
+            console.log('success:' + result.id);
+        
+        },
+        error: function () {
+            console.log('ERROR: failed');
+            
+        }
+    })
+  }
 
 </script>
 

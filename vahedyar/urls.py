@@ -28,4 +28,5 @@ urlpatterns = [
     path('login', views.do_login , name='login'),
     path('logout', views.do_logout , name='logout'),
     path('404', views.get_404),
+    path('updateScore/<int:study_id>/<int:course_id>/', views.create_or_update_score, name='updateScore')
 ]

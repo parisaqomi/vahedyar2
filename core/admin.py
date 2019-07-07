@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import University , Faculty ,Chart, Study , Course ,Scores
+from .models import University , Faculty ,Chart, Study , Course ,Score
 # Register your models here.
 admin.site.register(University)
 
@@ -11,7 +11,7 @@ admin.site.register(Chart)
 
 admin.site.register(Study)
 
-admin.site.register(Scores)
+admin.site.register(Score)
 
 admin.site.register(Course)
 
