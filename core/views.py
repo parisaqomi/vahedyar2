@@ -19,9 +19,10 @@ def get_panel(request,study_id):
         request.session['study_id'] = study_id
         return render(request, 'core/panel.html',{'study':study})
 
-def get_courseAssistant(request):
+def get_courseAssistant(request ,study_id):
     if request.method =="GET":
-        return render(request, 'core/CourseAssistant.html')
+        study = Study.objects.get(pk=study_id)
+        return render(request, 'core/CourseAssistant.html',{'study':study})
 
 def get_courseList(request,study_id):
     if request.method =="GET":

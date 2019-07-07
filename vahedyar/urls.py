@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.get_index , name='index'),
     path('panel/<int:study_id>/', views.get_panel, name='dashboard'),
-    path('courseAssistant', views.get_courseAssistant, name='courseAssistant'),
+    path('courseAssistant/<int:study_id>/', views.get_courseAssistant, name='courseAssistant'),
     path('courseList/<int:study_id>/', views.get_courseList, name='courseList'),
     path('courseSituation/<int:study_id>/', views.get_courseSituation, name='courseSituation'),
     path('ftForm', views.get_ftForm , name='ftForm'),
