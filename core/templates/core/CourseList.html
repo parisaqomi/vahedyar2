@@ -34,20 +34,20 @@
 
                       {% for course in courses %}
                       {% if course.course_type == 1 %}
-                        <tr class="toggler toggler1">
+                        <tr class="toggler">
                             <td>{{course.title}} </td>
                             <td>{{course.vahed_nazari}}</td>
                             <td>{{course.vahed_amali}}</td>
-                            {% if course.corequisite_courses is None %}
-                            <td>ندارد</td>
-                            {% else %}
-                            <td>دارد</td>
-                            {% endif %}
-                            {% if course.prerequisite_courses %}
-                            <td>{{course.prerequisite_courses}}</td>
-                            {% else %}
-                            <td></td>
-                            {% endif %}
+                            <td>
+                                {% for coreq in course.corequisite_courses.all %}
+                                {{ coreq }}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for prereq in course.prerequisite_courses.all %}
+                                {{ prereq }}
+                                {% endfor %}
+                            </td>
                         </tr>
                       {% endif %}
                       {% endfor %}
@@ -65,11 +65,15 @@
                             <td>{{course.vahed_nazari}}</td>
                             <td>{{course.vahed_amali}}</td>
                             <td>
-                            {% for coreq in course.corequisite_courses.all %}
-                            {{ coreq }}
-                            {% endfor %}
+                                {% for coreq in course.corequisite_courses.all %}
+                                {{ coreq }}
+                                {% endfor %}
                             </td>
-                            <td>{{course.prerequisite_courses.all}}</td>
+                            <td>
+                                {% for prereq in course.prerequisite_courses.all %}
+                                {{ prereq }}
+                                {% endfor %}
+                            </td>
                         </tr>
                       {% endif %}
                       {% endfor %}
@@ -85,8 +89,16 @@
                             <td>{{course.title}} </td>
                             <td>{{course.vahed_nazari}}</td>
                             <td>{{course.vahed_amali}}</td>
-                            <td>{{course.corequisite_courses}}</td>
-                            <td>{{course.prerequisite_courses}}</td>
+                            <td>
+                                {% for coreq in course.corequisite_courses.all %}
+                                {{ coreq }}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for prereq in course.prerequisite_courses.all %}
+                                {{ prereq }}
+                                {% endfor %}
+                            </td>
                         </tr>
                       {% endif %}
                       {% endfor %}
@@ -102,8 +114,16 @@
                             <td>{{course.title}} </td>
                             <td>{{course.vahed_nazari}}</td>
                             <td>{{course.vahed_amali}}</td>
-                            <td>{{course.corequisite_courses}}</td>
-                            <td>{{course.prerequisite_courses}}</td>
+                            <td>
+                                {% for coreq in course.corequisite_courses.all %}
+                                {{ coreq }}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for prereq in course.prerequisite_courses.all %}
+                                {{ prereq }}
+                                {% endfor %}
+                            </td>
                         </tr>
                       {% endif %}
                       {% endfor %}
