@@ -22,6 +22,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{% static 'core/css/style.css' %}" rel="stylesheet">
+  <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
   
   {% block stylesheet %}{% endblock %}
 </head>
@@ -55,14 +56,14 @@
           <span>داشبورد</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link text-right" href="{% url 'courseList' %}">
+        <a class="nav-link text-right" href="{% url 'courseList' study_id=request.session.study_id %}">
           <i class="fas fa-fw fa-list-alt"></i>
           <span>لیست دروس من</span></a>
       </li>
 
 
       <li class="nav-item active">
-        <a class="nav-link text-right" href="{% url 'courseSituation' %}">
+        <a class="nav-link text-right" href="{% url 'courseSituation'  study_id=request.session.study_id  %}">
           <i class="fas fa-fw fa-tasks"></i>
           <span>وضعیت دروس</span></a>
       </li>
@@ -178,8 +179,11 @@
     </div>
   </div>
 
-  <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
 
+    {% comment %} <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script> {% endcomment %}
   {% comment %} <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script> {% endcomment %}
   <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
   

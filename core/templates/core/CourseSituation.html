@@ -3,7 +3,8 @@
 {% endblock title %}
 
 {% block edu %}
-
+{{ study.get_degree_display }}
+{{ study.chart }} 
 {% endblock edu %}
 
 {% block content %}
@@ -98,7 +99,7 @@
         </div>
 
 
-<script src="static/core/vendor/jquery/jquery.min.js"></script>
+{% comment %} <script src="static/core/vendor/jquery/jquery.min.js"></script> {% endcomment %}
 <script>
   //cs
   $(".tbtn").on("click",function () {

@@ -38,10 +38,10 @@
                             <td>{{course.title}} </td>
                             <td>{{course.vahed_nazari}}</td>
                             <td>{{course.vahed_amali}}</td>
-                            {% if course.corequisite_courses != 'core.Course.None' %}
-                            <td>{{course.corequisite_courses}}</td>
+                            {% if course.corequisite_courses is None %}
+                            <td>ندارد</td>
                             {% else %}
-                            <td></td>
+                            <td>دارد</td>
                             {% endif %}
                             {% if course.prerequisite_courses %}
                             <td>{{course.prerequisite_courses}}</td>
@@ -64,8 +64,12 @@
                             <td>{{course.title}} </td>
                             <td>{{course.vahed_nazari}}</td>
                             <td>{{course.vahed_amali}}</td>
-                            <td>{{course.corequisite_courses}}</td>
-                            <td>{{course.prerequisite_courses}}</td>
+                            <td>
+                            {% for coreq in course.corequisite_courses.all %}
+                            {{ coreq }}
+                            {% endfor %}
+                            </td>
+                            <td>{{course.prerequisite_courses.all}}</td>
                         </tr>
                       {% endif %}
                       {% endfor %}
@@ -113,7 +117,7 @@
 
         </div>
 
-<script src="static/core/vendor/jquery/jquery.min.js"></script>
+{% comment %} <script src="static/core/vendor/jquery/jquery.min.js"></script> {% endcomment %}
 <script>
   //cs
   $(".tbtn").on("click",function () {

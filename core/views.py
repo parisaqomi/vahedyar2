@@ -23,15 +23,25 @@ def get_courseAssistant(request):
     if request.method =="GET":
         return render(request, 'core/CourseAssistant.html')
 
-def get_courseList(request):
+def get_courseList(request,study_id):
     if request.method =="GET":
+        study = Study.objects.get(pk=study_id)
+        request.session['study_id'] = study_id
         courses = Course.objects.all()
-        return render(request, 'core/CourseList.html', {'courses':courses})
+        return render(request, 'core/CourseList.html', {
+                'courses':courses,
+                'study':study
+                })
 
-def get_courseSituation(request):
+def get_courseSituation(request,study_id):
     if request.method =="GET":
+        study = Study.objects.get(pk=study_id)
+        request.session['study_id'] = study_id
         courses = Course.objects.all()
-        return render(request, 'core/CourseSituation.html', {'courses':courses})
+        return render(request, 'core/CourseSituation.html', {
+                'courses':courses,
+                'study':study
+                })
 
 def get_ftForm(request):
     if request.method =="GET":
