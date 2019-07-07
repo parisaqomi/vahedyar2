@@ -12054,3 +12054,16 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+
+.check-btn{
+    color: green;
+    border: none;
+    background: transparent !important;
+    font-size: 1.2em
+}
+
+.check-btn:hover{
+    cursor: pointer;
+    transform: translateY(-3px);
+}

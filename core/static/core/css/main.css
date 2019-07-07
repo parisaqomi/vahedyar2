@@ -218,3 +218,16 @@ tbody{
         display: none;
     }
 }
+
+/* course-situation-page */
+.check-btn{
+    color: green;
+    border: none;
+    background: transparent !important;
+    font-size: 1.2em
+}
+
+.check-btn:hover{
+    cursor: pointer;
+    transform: translateY(-3px);
+}

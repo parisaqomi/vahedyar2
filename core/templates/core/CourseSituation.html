@@ -39,7 +39,7 @@
                             <td>
                             
                             <button 
-                            class="fa fa-check" data-id="{{ score.course.id }}"
+                            class="fa fa-check check-btn" data-id="{{ score.course.id }}"
                             onclick="handleSubmit('{% url 'updateScore' study_id=request.session.study_id course_id=score.course.id %}', this)">
                             </button></td>
                         </tr>
