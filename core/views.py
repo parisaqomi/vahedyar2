@@ -49,11 +49,12 @@ def get_courseSituation(request,study_id):
     if request.method == 'POST':
         pass
 
-def get_ftForm(request):
+def get_study(request):
     if request.method =="GET":
-            universities = University.objects.all()
-            return render(request, 'core/first-time-form.html',
-                {'universities':universities })
+            
+            charts = Chart.objects.all()
+            return render(request, 'core/NewStudyForm.html',
+                {'charts':charts })
 
 def get_login(request):
     if request.method =="GET":
