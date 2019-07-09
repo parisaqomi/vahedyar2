@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Study , Course , University , Faculty, Score, Chart
 from django.contrib.auth import authenticate,logout,login
 from django.contrib import messages
@@ -7,6 +7,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.template.loader import get_template
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
 
 def get_index(request):
     if request.method =="GET":
@@ -50,11 +51,18 @@ def get_courseSituation(request,study_id):
         pass
 
 def get_study(request):
-    if request.method =="GET":
-            
-            charts = Chart.objects.all()
-            return render(request, 'core/NewStudyForm.html',
+    if request.method =="GET":    
+        charts = Chart.objects.all()
+        return render(request, 'core/NewStudyForm.html',
                 {'charts':charts })
+    if request.method == "POST":
+        chart_id = request.POST.get('chart')
+        chart_id = int(chart_id)
+        chart = Chart.objects.get(pk=chart_id)
+        student = request.user
+        new_study = Study(chart=chart,student=student)
+        new_study.save()  
+        return redirect('dashboard',study_id=new_study.id)     
 
 def get_login(request):
     if request.method =="GET":

@@ -14,13 +14,14 @@
                     </div>
 
                     <div class="row text-center">
-                        <form class="ftform">
+                        <form class="ftform" method="POST">
+                        {% csrf_token %}
                             <div class="form-group row">
                                     <label for="inputState">رشته(چارت)</label>
-                                    <select id="inputState" class="form-control">
+                                    <select name="chart" id="inputState" class="form-control">
                                       <option selected>انتخاب کنید</option>
                                       {% for chart in charts  %}
-                                        <option>{{chart}}</option>
+                                        <option value="{{chart.id}}">{{chart}}</option>
                                       {% endfor %}
 
 

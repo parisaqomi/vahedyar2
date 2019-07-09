@@ -41,7 +41,8 @@ class Faculty(models.Model):
 class Chart(models.Model):
     title = models.CharField(verbose_name="عنوان چارت" ,max_length = 40)
     is_active = models.BooleanField(verbose_name="فعال بودن")
-    degree = models.CharField(verbose_name="مقطع" , max_length = 20)
+    degree = models.IntegerField(choices=DEGREE_TYPE_CHOISES, verbose_name="مقطع تحصیلی")
+    # degree = models.CharField(verbose_name="مقطع" , max_length = 20)
     acceptance_date = models.DateField(verbose_name="تاریخ تصویب")
     course = models.ManyToManyField("Course" , null=True , blank=True)
     faculty = models.ForeignKey(
@@ -56,8 +57,8 @@ class Chart(models.Model):
         return f" {self.title} دانشکده {self.faculty}" 
 
 class Study(models.Model):
-    degree = models.IntegerField(choices=DEGREE_TYPE_CHOISES, verbose_name="مقطع تحصیلی")
-    entrance_year = models.DateField(verbose_name="سال ورود")
+    # degree = models.IntegerField(choices=DEGREE_TYPE_CHOISES, verbose_name="مقطع تحصیلی")
+   # entrance_year = models.DateField(verbose_name="سال ورود")
     student = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
