@@ -8,17 +8,18 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+
 var remainingUnits = parseInt($('#remaining-units').html());
-console.log(remainingUnits);
 
 var passedUnits = parseInt($('#passed-units').html());
-console.log(passedUnits);
 
 var passedPer = (passedUnits/remainingUnits) *100;
-console.log(passedPer);
 
 var remainingPer = 100 - passedPer;
-console.log(remainingPer)
+
+
+
+var x = $('#passed-units-span').html(passedPer + "%");
 
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
@@ -50,4 +51,5 @@ var myPieChart = new Chart(ctx, {
     },
     cutoutPercentage: 80,
   },
+
 });
