@@ -23,6 +23,7 @@
                       <th>نام درس</th>
                       <th>واحد نظری</th>
                       <th>واحد عملی</th>
+                      <th>نوع درس </th>
                       <th> نمره</th>
                       <th>  </th>
                   </tr>
@@ -33,6 +34,7 @@
                             <td>{{score.course.title}} </td>
                             <td>{{score.course.vahed_nazari}}</td>
                             <td>{{score.course.vahed_amali}}</td>
+                            <td>{{score.course.get_course_type_display}} </td>
                             <td>
                               <input id="{{ score.course.id }}" value="{{score.value }}" type='text' placeholder='نمره'>
                             </td>
@@ -78,6 +80,17 @@
     })
   }
 
+
+  var scoreRaneg = $('.toggler input').val();
+
+  console.log(scoreRaneg);
+
+  if (scoreRaneg<10){
+    $('.toggler').css("background-color" , "#ff6961").css("color" , "#fff")
+  }
+   else if (scoreRaneg>=10){
+    $('.toggler').css("background-color" , "#90EE90").css("color" , "#000")
+  }
 </script>
 
  {% endblock content %}
