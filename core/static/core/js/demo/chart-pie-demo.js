@@ -1,17 +1,35 @@
+
+// $( document ).ready(function() {
+//   var remainingUnits = $('#remaining-units').html();
+//   console.log(remainingUnits);
+// });
+
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
+
+var remainingUnits = parseInt($('#remaining-units').html());
+console.log(remainingUnits);
+
+var passedUnits = parseInt($('#passed-units').html());
+console.log(passedUnits);
+
+var passedPer = (passedUnits/remainingUnits) *100;
+console.log(passedPer);
+
+var remainingPer = 100 - passedPer;
+console.log(remainingPer)
 
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["گذشته", "munde"],
+    labels: ["گذرانده شده", "باید گذرانده شود"],
     datasets: [{
-      data: [85 , 15],
-      backgroundColor: ['#4e73df' ,'#4e7388'],
-      hoverBackgroundColor: ['#2e59d9','#4e73df'],
+      data: [passedPer , remainingPer],
+      backgroundColor: ['#90EE90' ,'#ffae42'],
+      hoverBackgroundColor: ['#198643','#ff7034'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },
