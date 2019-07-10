@@ -85,12 +85,14 @@
 
   console.log(scoreRaneg);
 
+{% block extrahead %}
   if (scoreRaneg<10){
-    $('.toggler').css("background-color" , "#ff6961").css("color" , "#fff")
+    $('#{{score.course.id}}').css("background-color" , "#ff6961").css("color" , "#fff")
   }
-   else if (scoreRaneg>=10){
+   {% comment %} else if (scoreRaneg>=10){
     $('.toggler').css("background-color" , "#90EE90").css("color" , "#000")
-  }
+  } {% endcomment %}
+  {% endblock %}
 </script>
 
  {% endblock content %}

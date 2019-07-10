@@ -13,13 +13,13 @@ var remainingUnits = parseInt($('#remaining-units').html());
 
 var passedUnits = parseInt($('#passed-units').html());
 
-var passedPer = (passedUnits/remainingUnits) *100;
+var passedPer = parseFloat((passedUnits/remainingUnits) *100).toFixed(2);
 
-var remainingPer = 100 - passedPer;
+var remainingPer = parseFloat( 100 - passedPer).toFixed(2);
 
 
 
-var x = $('#passed-units-span').html(passedPer + "%");
+var x = parseFloat($('#passed-units-span').html(passedPer + "%")).toFixed(2);
 
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
