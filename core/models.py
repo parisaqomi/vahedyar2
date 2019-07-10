@@ -77,6 +77,7 @@ class Study(models.Model):
 
 class Score(models.Model):
     value = models.FloatField(verbose_name="نمره")
+    is_counted = models.BooleanField(verbose_name='محاسبه شود', default=False)
     study = models.ForeignKey(
         'Study', 
         on_delete=models.CASCADE,

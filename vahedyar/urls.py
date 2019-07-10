@@ -20,7 +20,7 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.get_index , name='index'),
-    path('panel/<int:study_id>/', views.get_panel, name='dashboard'),
+    path('dashboard/<int:study_id>/', views.get_dashboard, name='dashboard'),
     path('courseAssistant/<int:study_id>/', views.get_courseAssistant, name='courseAssistant'),
     path('courseList/<int:study_id>/', views.get_courseList, name='courseList'),
     path('courseSituation/<int:study_id>/', views.get_courseSituation, name='courseSituation'),
