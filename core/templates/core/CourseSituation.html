@@ -12,7 +12,8 @@
         <div class="container-fluid">
 
           <div class=" text-right mb-4">
-            <h1 class="h3 mb-5 text-gray-800">وضعیت دروس من</h1>
+            <h1 class="h3 mb-5 text-gray-800 d-print-none">وضعیت دروس من</h1>
+            <h1 class="h3 mb-5 text-gray-800 d-print-inline-block d-none">ریز نمرات رشته‌ی {{ study.chart }} </h1>
           </div>
 
           <div class="row table-responsive-sm table-responsive-md">
@@ -25,7 +26,7 @@
                       <th>واحد عملی</th>
                       <th>نوع درس </th>
                       <th> نمره</th>
-                      <th>  </th>
+                      <th class="d-print-none"> <a href="javascript:window.print()"><i class="fa fa-print"></i>  </a>  </th>
                   </tr>
               </thead>
               <tbody>
@@ -36,12 +37,12 @@
                             <td>{{score.course.vahed_amali}}</td>
                             <td>{{score.course.get_course_type_display}} </td>
                             <td>
-                              <input id="{{ score.course.id }}" value="{{score.value }}" type='text' placeholder='نمره'>
+                              <input class="score-input" id="{{ score.course.id }}" value="{{score.value }}" type='text' placeholder='نمره'>
                             </td>
                             <td>
                             
                             <button 
-                            class="fa fa-check check-btn" data-id="{{ score.course.id }}"
+                            class="fa fa-check check-btn d-print-none" data-id="{{ score.course.id }}"
                             onclick="handleSubmit('{% url 'updateScore' study_id=request.session.study_id course_id=score.course.id %}', this)">
                             </button></td>
                         </tr>
@@ -81,18 +82,29 @@
   }
 
 
-  var scoreRaneg = $('.toggler input').val();
+ 
 
-  console.log(scoreRaneg);
+ 
 
-{% block extrahead %}
-  if (scoreRaneg<10){
-    $('#{{score.course.id}}').css("background-color" , "#ff6961").css("color" , "#fff")
+  var tableRow =$('Table tr').length-1;
+
+
+  for (var i =0 ; i< tableRow ; i++){
+    console.log("row number" + i);
+    var data = $('.score-input').val();
+        var data = $.makeArray ($('.score-input').val());
+    console.log("row data" + data);
   }
-   {% comment %} else if (scoreRaneg>=10){
-    $('.toggler').css("background-color" , "#90EE90").css("color" , "#000")
-  } {% endcomment %}
-  {% endblock %}
+
+
+
+
+/*  if (myarr<10){
+    $('.score-input').css("background-color" , "#ff6961").css("color" , "#fff")
+  }
+ else if (myarr>=10){
+    $('.score-input').css("background-color" , "#90EE90").css("color" , "#000")
+  } */
 </script>
 
  {% endblock content %}
