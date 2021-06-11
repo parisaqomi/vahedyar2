@@ -57,8 +57,8 @@ class Chart(models.Model):
         return f" {self.title} دانشکده {self.faculty}" 
 
 class Study(models.Model):
-    # degree = models.IntegerField(choices=DEGREE_TYPE_CHOISES, verbose_name="مقطع تحصیلی")
-   # entrance_year = models.DateField(verbose_name="سال ورود")
+    degree = models.IntegerField(choices=DEGREE_TYPE_CHOISES, verbose_name="مقطع تحصیلی")
+    entrance_year = models.DateField(verbose_name="سال ورود")
     student = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

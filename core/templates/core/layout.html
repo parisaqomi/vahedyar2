@@ -73,6 +73,7 @@
 
       <li class="nav-item active">
         <a class="nav-link text-right" href="{% url 'courseAssistant' study_id=request.session.study_id %}">
+          {% comment %} {% url 'courseAssistant' study_id=request.session.study_id %} {% endcomment %}
           <i class="fab fa-fw fa-hire-a-helper"></i>
           <span>دستیار اخذ درس</span></a>
       </li>

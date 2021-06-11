@@ -40,7 +40,9 @@ def get_dashboard(request, study_id):
 def get_courseAssistant(request, study_id):
     if request.method == "GET":
         study = Study.objects.get(pk=study_id)
-        return render(request, 'core/CourseAssistant.html', {'study': study})
+        # study = Study.objects.all()
+       # chart = Chart.objects.get(study=study_id)
+        return render(request, 'core/CourseAssistant.html', {'study': study,'course':study.chart.course})
 
 
 def get_courseList(request, study_id):
