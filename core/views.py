@@ -42,7 +42,7 @@ def get_courseAssistant(request, study_id):
         study = Study.objects.get(pk=study_id)
         # study = Study.objects.all()
        # chart = Chart.objects.get(study=study_id)
-        return render(request, 'core/CourseAssistant.html', {'study': study,'course':study.chart.course})
+        return render(request, 'core/CourseAssistant.html', {'study': study,'courses':study.chart.course.all()})
 
 
 def get_courseList(request, study_id):

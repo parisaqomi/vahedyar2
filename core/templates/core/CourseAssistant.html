@@ -16,17 +16,17 @@
 
 
           <div class="row">
-            {% for stud in course %}
+            {% for course in courses %}
 
             <div class="col-xl-3 col-lg-5">
               <div class="course-item text-center position-relative">
-                <div class="course-item-name p-2">مهندسی نت</div>
+                <div class="course-item-name p-2">{{course.title}}</div>
                 <div class="course-item-vahed py-2">
                     <span class="p-2">
-                       2
+                      {{course.vahed_nazari}}
                     </span>
                     <span class="p-2"> 
-                        2
+                        {{course.vahed_amali}}
                     </span>
                 </div>
                 <div class="close-icon" onClick={this.Remove.bind(this,item.id)}>
