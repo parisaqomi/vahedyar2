@@ -16,7 +16,7 @@
 
 
           <div class="row">
-            {% for course in courses %}
+            {% for course in list_allowed_courses %}
 
             <div class="col-xl-3 col-lg-5">
               <div class="course-item text-center position-relative">
@@ -36,6 +36,13 @@
             </div>
 
           {% endfor %}
+            {% for score in scores %}
+<div>{{score.course_id}}:{{score.value}}</div>
+              {% endfor %}
+
+            {% for d in dif %}
+<div class="w-100" style="backgroun-color:red">{{d.title}}</div>
+              {% endfor %}
 <!-- 
             <div class="col-xl-3 col-lg-5">
               <div class="course-item text-center position-relative">
