@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 COURSE_TYPE_CHOISES=[(1,u'درس اصلی') ,
      (2,u'درس تخصصی') ,
       (3,u'درس عمومی'),
-      (4,u'درس اختیاری')]
+      (4,u'درس اختیاری'),(5,u'درس پایه')]
 
 DEGREE_TYPE_CHOISES=[(1,u'کاردانی') ,
      (2,u'کارشناسی') ,

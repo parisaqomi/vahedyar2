@@ -40,29 +40,33 @@ def get_dashboard(request, study_id):
 def get_courseAssistant(request, study_id):
     if request.method == "GET":
         study = Study.objects.get(pk=study_id)
-        allcourses = study.chart.course.all()
+        allcourses = study.chart.course.all().prefetch_related('corequisite_courses')
         allscore = Score.objects.all()
         # list_difference= getDifference(allcourses,allscore)
-        allscored_course_ids = allscore.values_list('course_id', flat=True)
-        allcoursed_id=allcourses.values_list('id', flat=True)
+        allscored_course_ids = allscore.filter(
+            value__gt= 10).values_list('course_id', flat=True)
+        allcoursed_id = allcourses.values_list('id', flat=True)
         list_difference = []
         for item in allcoursed_id:
-                    if item not in allscored_course_ids:
-                     list_difference.append(item)
+            if item not in allscored_course_ids:
+                list_difference.append(item)
         # list_allowed_courses= []
         # for item in list_difference:
         #             if item  in allscored_course_ids:
         #              list_allowed_courses.append(item)
-        list_allowed_courses = [x for x in allcourses if x.id in list_difference]
-                    
+        list_allowed_courses = [
+            x for x in allcourses if x.id in list_difference]
+
         study = Study.objects.all()
     #    chart = Chart.objects.get(study=study_id)
-       
-        return render(request, 'core/CourseAssistant.html', {'study': study,'list_allowed_courses':list_allowed_courses})
 
-def getDifference(x,y):
+        return render(request, 'core/CourseAssistant.html', {'study': study, 'list_allowed_courses': list_allowed_courses})
+
+
+def getDifference(x, y):
     symDiff = set(i[0] for i in x) ^ set(i[0] for i in y)
     return [i for i in x if i[0] in symDiff] + [i for i in y if i[0] in symDiff]
+
 
 def get_courseList(request, study_id):
     if request.method == "GET":
@@ -103,7 +107,7 @@ def get_study(request):
         new_study = Study(chart=chart, student=student)
         new_study.save()
         for course in chart.course.all():
-            empty_score = Score(study=new_study,course=course,value=0)
+            empty_score = Score(study=new_study, course=course, value=0)
             empty_score.save()
         return redirect('dashboard', study_id=new_study.id)
 
