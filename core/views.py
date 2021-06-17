@@ -60,7 +60,7 @@ def get_courseAssistant(request, study_id):
         study = Study.objects.all()
     #    chart = Chart.objects.get(study=study_id)
 
-        return render(request, 'core/CourseAssistant.html', {'study': study, 'list_allowed_courses': list_allowed_courses})
+        return render(request, 'core/CourseAssistant.html', {'study': study, 'list_allowed_courses': list_allowed_courses,'allscored_course_ids':allscored_course_ids})
 
 
 def getDifference(x, y):
