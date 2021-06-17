@@ -40,7 +40,7 @@ def get_dashboard(request, study_id):
 def get_courseAssistant(request, study_id):
     if request.method == "GET":
         study = Study.objects.get(pk=study_id)
-        allcourses = study.chart.course.all().prefetch_related('corequisite_courses')
+        allcourses = study.chart.course.all().prefetch_related('corequisite_courses').prefetch_related('prerequisite_courses')
         allscore = Score.objects.all()
         # list_difference= getDifference(allcourses,allscore)
         allscored_course_ids = allscore.filter(
@@ -50,15 +50,11 @@ def get_courseAssistant(request, study_id):
         for item in allcoursed_id:
             if item not in allscored_course_ids:
                 list_difference.append(item)
-        # list_allowed_courses= []
-        # for item in list_difference:
-        #             if item  in allscored_course_ids:
-        #              list_allowed_courses.append(item)
+
         list_allowed_courses = [
             x for x in allcourses if x.id in list_difference]
 
         study = Study.objects.all()
-    #    chart = Chart.objects.get(study=study_id)
 
         return render(request, 'core/CourseAssistant.html', {'study': study, 'list_allowed_courses': list_allowed_courses,'allscored_course_ids':allscored_course_ids})
 
