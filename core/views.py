@@ -13,8 +13,19 @@ from datetime import datetime
 def get_index(request):
     if request.method == "GET":
         studies = Study.objects.all()
-        return render(request, 'core/index.html', {'studies': studies})
-
+        charts = Chart.objects.all()
+        return render(request, 'core/index.html', {'studies': studies,'charts':charts})
+    if request.method == "POST":
+        chart_id = request.POST.get('chart')
+        chart_id = int(chart_id)
+        chart = Chart.objects.get(pk=chart_id)
+        student = request.user
+        new_study = Study(chart=chart, student=student)
+        new_study.save()
+        for course in chart.course.all():
+            empty_score = Score(study=new_study, course=course, value=0)
+            empty_score.save()
+        return redirect('dashboard', study_id=new_study.id)
 
 def get_dashboard(request, study_id):
     if request.method == "GET":
@@ -100,7 +111,9 @@ def get_study(request):
         chart_id = int(chart_id)
         chart = Chart.objects.get(pk=chart_id)
         student = request.user
+        degree = chart.degree
         new_study = Study(chart=chart, student=student)
+        new_study.degree=degree
         new_study.save()
         for course in chart.course.all():
             empty_score = Score(study=new_study, course=course, value=0)
