@@ -20,7 +20,8 @@ def get_index(request):
         chart_id = int(chart_id)
         chart = Chart.objects.get(pk=chart_id)
         student = request.user
-        new_study = Study(chart=chart, student=student)
+        entrance_year=datetime.now().date()
+        new_study = Study(chart=chart, student=student,entrance_year=entrance_year)
         new_study.save()
         for course in chart.course.all():
             empty_score = Score(study=new_study, course=course, value=0)
@@ -36,6 +37,9 @@ def get_dashboard(request, study_id):
         passed_scores = study.score_set.filter(value__gte=PASSING_SCORE)
         number_of_passed_courses = len(passed_scores)
         number_of_not_passed_courses = total_number_of_courses - number_of_passed_courses
+        # for item in passed_scores:
+
+
 
         # logic end
         request.session['study_id'] = study_id
@@ -111,9 +115,10 @@ def get_study(request):
         chart_id = int(chart_id)
         chart = Chart.objects.get(pk=chart_id)
         student = request.user
-        degree = chart.degree
-        new_study = Study(chart=chart, student=student)
-        new_study.degree=degree
+       
+        degree =int(chart.degree) 
+        new_study = Study(chart=chart, student=student,degree=degree)
+        # new_study.degree=degree
         new_study.save()
         for course in chart.course.all():
             empty_score = Score(study=new_study, course=course, value=0)
