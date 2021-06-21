@@ -8,12 +8,14 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template.loader import get_template
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
+# import pdb; pdb.set_trace()
 
 
 def get_index(request):
     if request.method == "GET":
         studies = Study.objects.all()
         charts = Chart.objects.all()
+        # breakpoint()
         return render(request, 'core/index.html', {'studies': studies,'charts':charts})
     if request.method == "POST":
         chart_id = request.POST.get('chart')
@@ -76,10 +78,11 @@ def get_courseAssistant(request, study_id):
     if request.method == "GET":
         study = Study.objects.get(pk=study_id)
         allcourses = study.chart.course.all().prefetch_related('corequisite_courses').prefetch_related('prerequisite_courses')
-        allscore = Score.objects.all()
+        allscore = Score.objects.filter(study_id=study_id)
+        PASSING_SCORE = 10
         # list_difference= getDifference(allcourses,allscore)
         allscored_course_ids = allscore.filter(
-            value__gt= 10).values_list('course_id', flat=True)
+            value__gte= PASSING_SCORE).values_list('course_id', flat=True)
         allcoursed_id = allcourses.values_list('id', flat=True)
         list_difference = []
         for item in allcoursed_id:
@@ -91,7 +94,7 @@ def get_courseAssistant(request, study_id):
 
         study = Study.objects.all()
 
-        return render(request, 'core/CourseAssistant.html', {'study': study, 'list_allowed_courses': list_allowed_courses,'allscored_course_ids':allscored_course_ids})
+        return render(request, 'core/CourseAssistant.html', {'study': study, 'list_allowed_courses': list_allowed_courses,'allscored_course_ids':allscored_course_ids,'test':allscore})
 
 
 def getDifference(x, y):
@@ -115,7 +118,8 @@ def get_courseSituation(request, study_id):
         study = Study.objects.get(pk=study_id)
         # chart = Chart.objects.filter(study = study)
         courses = Course.objects.all()
-        scores = study.score_set.all()
+        # scores = study.score_set.all()
+        scores=Score.objects.filter(study_id=study_id)
         request.session['study_id'] = study_id
         return render(request, 'core/CourseSituation.html', {
             'scores': scores,
