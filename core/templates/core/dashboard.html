@@ -13,16 +13,16 @@
   <div class=" mb-4 text-right">
     <h1 class="h3 mb-5 text-gray-800">داشبورد</h1>
   </div>
-
+<div style="display:none !important" id="total_units">{{total_units}}</div>
   <div class="row">
 
-    <div class="col-xl-4 col-md-4 mb-4">
+    <div class="col-xl-3 col-md-3 mb-4">
       <div class="card position-relative shadow h-100 py-2  min-height" >
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <h4 class="my-2 text-right">تعداد دروس  گذرانده شده</h4>
-              <div class="h5 mb-0 font-weight-bold card-number" id="passed-units">{{passed}}</div>
+              <div class="h5 mb-0 font-weight-bold card-number" >{{passed}}</div>
             </div>
             
           </div>
@@ -30,26 +30,39 @@
       </div>
     </div>
 
-    <div class="col-xl-4 col-md-4 mb-4">
+    <div class="col-xl-3 col-md-3 mb-4">
       <div class="card position-relative shadow h-100 py-2  min-height">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <h4 class="my-2 text-right">تعداد دروس گذرانده نشده</h4>
-              <div class="h5 mb-0 font-weight-bold card-number" id="remaining-units">{{remaining}}</div>
+              <div class="h5 mb-0 font-weight-bold card-number" >{{remaining}}</div>
             </div>
             
           </div>
         </div>
       </div>
     </div>
-<div class="col-xl-4 col-md-4 mb-4">
+<div class="col-xl-3 col-md-3 mb-4">
       <div class="card position-relative shadow h-100 py-2  min-height">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
               <h4 class="my-2 text-right">تعداد واحد گذرانده شده</h4>
-              <div class="h5 mb-0 font-weight-bold card-number">{{sum_vahed_passed}}</div>
+              <div class="h5 mb-0 font-weight-bold card-number" id="passed-units">{{sum_vahed_passed}}</div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-3 mb-4">
+      <div class="card position-relative shadow h-100 py-2  min-height">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <h4 class="my-2 text-right">تعداد واحد مانده</h4>
+              <div class="h5 mb-0 font-weight-bold card-number" id="remaining-units">{{remain_units}}</div>
             </div>
             
           </div>

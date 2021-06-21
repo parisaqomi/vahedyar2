@@ -37,19 +37,24 @@ def get_dashboard(request, study_id):
         passed_scores = study.score_set.filter(value__gte=PASSING_SCORE)
         number_of_passed_courses = len(passed_scores)
         number_of_not_passed_courses = total_number_of_courses - number_of_passed_courses
-        sum_vahed_passed=0
+        sum_passed_units=0
         sum_score_passed=0
+        total_units=0
         for item in passed_scores:
             
-                sum_vahed=item.course.vahed_nazari + item.course.vahed_amali
-                sum_vahed_passed += sum_vahed 
-                sum_score_passed += sum_vahed * item.value 
-        if sum_vahed_passed!=0:
-            average=sum_score_passed/sum_vahed_passed
+                sum_unit=item.course.vahed_nazari + item.course.vahed_amali
+                sum_passed_units += sum_unit 
+                sum_score_passed += sum_unit * item.value 
+        if sum_passed_units!=0:
+            average=sum_score_passed/sum_passed_units
         else: average=0
         formatted_average = "{:.2f}".format(average)
 
-            
+        for item in study.chart.course.all():
+                sum_chart_unit=item.vahed_nazari + item.vahed_amali
+                total_units+=sum_chart_unit
+
+        remain_units=total_units-sum_passed_units
 
 
         # logic end
@@ -59,7 +64,9 @@ def get_dashboard(request, study_id):
                        'passed': number_of_passed_courses,
                        'remaining': number_of_not_passed_courses,
                        'average':formatted_average,
-                       'sum_vahed_passed':sum_vahed_passed
+                       'sum_vahed_passed':sum_passed_units,
+                       'remain_units':remain_units,
+                       'total_units':total_units
 
                        }
                       )
