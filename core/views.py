@@ -37,8 +37,19 @@ def get_dashboard(request, study_id):
         passed_scores = study.score_set.filter(value__gte=PASSING_SCORE)
         number_of_passed_courses = len(passed_scores)
         number_of_not_passed_courses = total_number_of_courses - number_of_passed_courses
-        # for item in passed_scores:
+        sum_vahed_passed=0
+        sum_score_passed=0
+        for item in passed_scores:
+            
+                sum_vahed=item.course.vahed_nazari + item.course.vahed_amali
+                sum_vahed_passed += sum_vahed 
+                sum_score_passed += sum_vahed * item.value 
+        if sum_vahed_passed!=0:
+            average=sum_score_passed/sum_vahed_passed
+        else: average=0
+        formatted_average = "{:.2f}".format(average)
 
+            
 
 
         # logic end
@@ -46,7 +57,9 @@ def get_dashboard(request, study_id):
         return render(request, 'core/dashboard.html',
                       {'study': study,
                        'passed': number_of_passed_courses,
-                       'remaining': number_of_not_passed_courses
+                       'remaining': number_of_not_passed_courses,
+                       'average':formatted_average,
+                       'sum_vahed_passed':sum_vahed_passed
 
                        }
                       )
